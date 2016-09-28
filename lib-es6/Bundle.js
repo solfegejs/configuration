@@ -44,9 +44,15 @@ export default class Bundle
      * @param   {solfegejs/kernel/Application}      application     Solfege application
      * @param   {solfegejs/kernel/Configuration}    configuration   Solfege configuration
      * @param   {string}                            filePath        Configuration file path
+     * @param   {string}                            format          File format
      */
-    *onConfigurationLoad(application, configuration, filePath)
+    *onConfigurationLoad(application, configuration, filePath:string, format:string)
     {
+        // Check the format
+        if (format !== "yaml") {
+            return;
+        }
+
         let properties = {};
 
         // Parse YAML file
