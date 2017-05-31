@@ -1,5 +1,6 @@
-import configYaml from "config-yaml";
-import bindGenerator from "bind-generator";
+/* @flow */
+import configYaml from "config-yaml"
+import bindGenerator from "bind-generator"
 
 /**
  * Configuration bundle
@@ -7,12 +8,15 @@ import bindGenerator from "bind-generator";
 export default class Bundle
 {
     /**
+     * Solfege application
+     */
+    application:any;
+
+    /**
      * Constructor
      */
-    constructor()
+    constructor():void
     {
-        // Declare application property
-        this.application;
     }
 
     /**
@@ -20,7 +24,7 @@ export default class Bundle
      *
      * @return  {String}        The bundle path
      */
-    getPath()
+    getPath():string
     {
         return __dirname;
     }
@@ -28,9 +32,9 @@ export default class Bundle
     /**
      * Initialize the bundle
      *
-     * @param   {solfegejs/kernel/Application}  application     Solfege application
+     * @param   {ApplicationInterface}  application     Solfege application
      */
-    *initialize(application)
+    *initialize(application:any):Generator<void,void,void>
     {
         this.application = application;
 
@@ -41,12 +45,12 @@ export default class Bundle
     /**
      * The configuration is loading
      *
-     * @param   {solfegejs/kernel/Application}      application     Solfege application
-     * @param   {solfegejs/kernel/Configuration}    configuration   Solfege configuration
-     * @param   {string}                            filePath        Configuration file path
-     * @param   {string}                            format          File format
+     * @param   {ApplicationInterface}      application     Solfege application
+     * @param   {ConfigurationInterface}    configuration   Solfege configuration
+     * @param   {string}                    filePath        Configuration file path
+     * @param   {string}                    format          File format
      */
-    *onConfigurationLoad(application, configuration, filePath:string, format:string)
+    *onConfigurationLoad(application:*, configuration:*, filePath:string, format:string):Generator<void,void,void>
     {
         // Check the format
         if (format !== "yaml") {
@@ -60,6 +64,7 @@ export default class Bundle
             properties = configYaml(filePath, {encoding: "utf8"});
         } catch (error) {
             // Unable to parse YAML file
+            console.error(error);
             return;
         }
 
