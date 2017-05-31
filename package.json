@@ -1,7 +1,7 @@
 {
     "name"          : "solfegejs-configuration",
     "description"   : "Configuration manager for SolfegeJS",
-    "version"       : "1.0.4",
+    "version"       : "1.0.5",
     "author"        : "neolao <contact@neolao.com>",
     "repository"    : "https://github.com/neolao/solfege-bundle-configuration.git",
     "license"       : "MIT",
@@ -39,7 +39,7 @@
         "flow-stop": "flow stop",
         "flow-start": "flow start",
         "flow-restart": "flow stop; flow start",
-        "prepare": "npm run build; npm test",
+        "prepare": "npm run build",
         "lint": "eslint --ext .js src",
         "test": "mocha --harmony --compilers js:babel-core/register --require co-mocha --recursive --reporter spec --bail",
         "prebuild": "npm run lint && flow",
