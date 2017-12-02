@@ -25,5 +25,5 @@ let application = solfege.factory();
 application.addBundle(new MyBundle);
 
 // Load configuration
-application.loadConfigurationFile(`${__dirname}/config/production.yml`, "yaml");
+application.setConfigurationFile(`${__dirname}/config/production.yml`, "yaml");
 ```

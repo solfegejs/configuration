@@ -1,25 +1,22 @@
 {
-    "name"          : "solfegejs-configuration",
-    "description"   : "Configuration manager for SolfegeJS",
-    "version"       : "1.0.5",
-    "author"        : "neolao <contact@neolao.com>",
-    "repository"    : "https://github.com/neolao/solfege-bundle-configuration.git",
-    "license"       : "MIT",
-    "main"          : "lib/Bundle.js",
+    "name": "solfegejs-configuration",
+    "description": "Configuration loader for SolfegeJS",
+    "version": "2.0.0",
+    "author": "neolao <contact@neolao.com>",
+    "repository": "https://github.com/neolao/solfege-bundle-configuration.git",
+    "license": "MIT",
+    "main": "lib/Bundle.js",
     "files": [
         "lib"
     ],
-    "engines"       : 
-    {
-        "node": ">= 5"
+    "engines": {
+        "node": ">= 9"
     },
-    "dependencies"  :
-    {
-        "config-yaml"       : "^1.0",
-        "bind-generator"    : "^1.0.0"
+    "dependencies": {
+        "config-yaml": "^1.0"
     },
-    "devDependencies":
-    {
+    "devDependencies": {
+        "solfegejs": "~3.0",
         "babel-cli": "^6.7",
         "babel-preset-solfege": "^1.0",
         "eslint": "^3.19",
@@ -27,15 +24,14 @@
         "chai": "^3.5",
         "co-mocha": "^1.2",
         "coveralls": "^2.13.1",
-        "flow-bin": "^0.45.0",
+        "flow-bin": "^0.60.1",
         "gnomon": "^1.5.0",
         "jsdoc": "^3.4",
         "mocha": "^3.3",
         "nyc": "^10.3.2",
         "watch": "^1.0.2"
     },
-    "scripts"       :
-    {
+    "scripts": {
         "flow-stop": "flow stop",
         "flow-start": "flow start",
         "flow-restart": "flow stop; flow start",
@@ -44,7 +40,7 @@
         "test": "mocha --harmony --compilers js:babel-core/register --require co-mocha --recursive --reporter spec --bail",
         "prebuild": "npm run lint && flow",
         "build": "babel --out-dir lib src --copy-files",
-        "watch": "watch 'echo \"----------\"; npm run build --silent | gnomon' ./src",
+        "watch": "watch 'echo \"----------\"; npm run build --silent' ./src",
         "example-build": "flow; babel --out-dir example/lib example/src --copy-files",
         "example-console": "node example/lib/console.js"
     },
@@ -56,6 +52,9 @@
         "plugins": []
     },
     "eslintConfig": {
-        "extends": ["eslint:recommended", "plugin:solfege/recommended"]
+        "extends": [
+            "eslint:recommended",
+            "plugin:solfege/recommended"
+        ]
     }
 }

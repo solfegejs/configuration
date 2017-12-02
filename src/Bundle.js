@@ -1,6 +1,7 @@
 /* @flow */
 import configYaml from "config-yaml"
-import bindGenerator from "bind-generator"
+import type Application from "solfegejs/src/Application"
+import type Configuration from "solfegejs/src/Configuration"
 
 /**
  * Configuration bundle
@@ -10,7 +11,7 @@ export default class Bundle
     /**
      * Solfege application
      */
-    application:any;
+    application:Application;
 
     /**
      * Constructor
@@ -32,25 +33,25 @@ export default class Bundle
     /**
      * Initialize the bundle
      *
-     * @param   {ApplicationInterface}  application     Solfege application
+     * @param   {Application}   application     Solfege application
      */
-    *initialize(application:any):Generator<void,void,void>
+    initialize(application:Application)
     {
         this.application = application;
 
         // Listen the end of configuration loading
-        this.application.on("configuration_load", bindGenerator(this, this.onConfigurationLoad));
+        this.application.on("configuration_load", this.onConfigurationLoad);
     }
 
     /**
      * The configuration is loading
      *
-     * @param   {ApplicationInterface}      application     Solfege application
-     * @param   {ConfigurationInterface}    configuration   Solfege configuration
-     * @param   {string}                    filePath        Configuration file path
-     * @param   {string}                    format          File format
+     * @param   {Application}   application     Solfege application
+     * @param   {Configuration} configuration   Solfege configuration
+     * @param   {string}        filePath        Configuration file path
+     * @param   {string}        format          File format
      */
-    *onConfigurationLoad(application:*, configuration:*, filePath:string, format:string):Generator<void,void,void>
+    onConfigurationLoad(application:Application, configuration:Configuration, filePath:string, format:string)
     {
         // Check the format
         if (format !== "yaml") {
