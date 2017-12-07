@@ -1,9 +1,9 @@
-import solfege from "solfegejs";
+import Application from "solfegejs-application";
 import ConfigurationBundle from "../../lib/Bundle";
 import MyBundle from "./Bundle";
 
 // Create application instance
-let application = solfege.factory();
+let application = new Application;
 application.addBundle(new ConfigurationBundle);
 application.addBundle(new MyBundle);
 

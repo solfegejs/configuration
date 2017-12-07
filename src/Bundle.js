@@ -1,7 +1,7 @@
 /* @flow */
 import configYaml from "config-yaml"
-import type Application from "solfegejs/src/Application"
-import type Configuration from "solfegejs/src/Configuration"
+import type Application from "solfegejs-application/src/Application"
+import type Configuration from "solfegejs-application/src/Configuration"
 
 /**
  * Configuration bundle
