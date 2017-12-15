@@ -1,25 +1,13 @@
 /* @flow */
-import configYaml from "config-yaml"
 import type Application from "solfegejs-application/src/Application"
-import type Configuration from "solfegejs-application/src/Configuration"
+import type {BundleInterface, InitializableBundleInterface} from "solfegejs-application/src/BundleInterface"
+import Configuration from "./Configuration"
 
 /**
  * Configuration bundle
  */
-export default class Bundle
+export default class Bundle implements BundleInterface, InitializableBundleInterface
 {
-    /**
-     * Solfege application
-     */
-    application:Application;
-
-    /**
-     * Constructor
-     */
-    constructor():void
-    {
-    }
-
     /**
      * Get bundle path
      *
@@ -37,39 +25,6 @@ export default class Bundle
      */
     initialize(application:Application)
     {
-        this.application = application;
-
-        // Listen the end of configuration loading
-        this.application.on("configuration_load", this.onConfigurationLoad);
-    }
-
-    /**
-     * The configuration is loading
-     *
-     * @param   {Application}   application     Solfege application
-     * @param   {Configuration} configuration   Solfege configuration
-     * @param   {string}        filePath        Configuration file path
-     * @param   {string}        format          File format
-     */
-    onConfigurationLoad(application:Application, configuration:Configuration, filePath:string, format:string)
-    {
-        // Check the format
-        if (format !== "yaml") {
-            return;
-        }
-
-        let properties = {};
-
-        // Parse YAML file
-        try {
-            properties = configYaml(filePath, {encoding: "utf8"});
-        } catch (error) {
-            // Unable to parse YAML file
-            console.error(error);
-            return;
-        }
-
-        // Add properties to configuration
-        configuration.addProperties(properties);
+        application.setParameter("configuration", new Configuration);
     }
 }

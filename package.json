@@ -1,20 +1,19 @@
 {
     "name": "solfegejs-configuration",
-    "description": "Configuration loader for SolfegeJS",
-    "version": "2.1.0",
+    "description": "SolfegeJS configuration",
+    "version": "2.2.0",
     "author": "neolao <contact@neolao.com>",
     "repository": "https://github.com/neolao/solfege-bundle-configuration.git",
     "license": "MIT",
     "main": "lib/Bundle.js",
     "files": [
-        "lib"
+        "lib",
+        "src"
     ],
     "engines": {
         "node": ">= 9"
     },
-    "dependencies": {
-        "config-yaml": "^1.0"
-    },
+    "dependencies": {},
     "devDependencies": {
         "solfegejs-application": "~3.0",
         "babel-cli": "^6.7",
@@ -34,7 +33,7 @@
         "flow-stop": "flow stop",
         "flow-start": "flow start",
         "flow-restart": "flow stop; flow start",
-        "prepare": "npm run build",
+        "prepare": "npm run build && npm run test",
         "lint": "eslint --ext .js src",
         "test": "mocha --harmony --compilers js:babel-core/register --require co-mocha --recursive --reporter spec --bail",
         "prebuild": "npm run lint && flow",
