@@ -8,7 +8,7 @@ Installation
 
 The bundle is included by default in SolfegeJS. You don't need to install it.
 
-See [SolfegeJS](https://github.com/neolao/solfege/)
+See [SolfegeJS](https://github.com/solfegejs/solfege)
 
 
 Usage

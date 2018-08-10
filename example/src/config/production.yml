@@ -1,7 +1,0 @@
-imports:
-    - { resource: "default.yml" }
-
-a: 42
-
-parameters:
-    foo: "%z%essert"
